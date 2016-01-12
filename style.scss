@@ -1,0 +1,379 @@
+$light-grey: #f2f2f2;
+$team-grey: #eaeaea;
+$primary-orange: #ec4c2c;
+$hover-color: #ec8a76;
+$text-glow: #fbd2ca;
+
+.my-font {
+	font-family: "Source Sans Pro", sans-serif;
+}
+
+@mixin my-text($size) {
+	@extend .my-font;
+
+	color: black;
+	text-align: center;
+	font-size: $size;
+}
+
+@mixin total-color($color) {
+	background-color: $color;
+	border-color: $color;
+}
+
+@mixin rounded-corners($radius) {
+	-moz-border-radius: $radius;
+	-webkit-border-radius: $radius;
+	border-radius: $radius;
+}
+
+@mixin my-border-width($width) {
+	-moz-border-width: $width;
+	-webkit-border-width: $width;
+	border-width: $width;
+}
+
+.circle-corners {
+	@include rounded-corners(9999px);
+}
+
+.horizontal-center {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+.page-elem {
+	@extend .horizontal-center;
+	@include rounded-corners(5px);
+	width: 90%;
+}
+
+a {
+	text-decoration: none;
+	&:hover{
+		text-decoration: none;
+	}
+}
+
+.my-button {
+	@extend .circle-corners;
+	@extend .horizontal-center;
+	@extend .my-font;
+
+	@include total-color($primary-orange);
+
+	@include my-border-width(3px);
+
+	&:hover {
+		@include total-color($primary-orange);
+		color: white;
+	}
+
+	&:active {
+		@include total-color($primary-orange);
+	}
+
+	color: white;
+}
+
+.my-disabled {
+	@include total-color($primary-orange);
+}
+
+//
+//
+//NAVBAR
+//
+//
+
+.my-navbar {
+	@extend .page-elem;
+	@include total-color($primary-orange);
+
+	-webkit-box-shadow: 0px 5px 11px 0px rgba(0,0,0,0.16);
+	-moz-box-shadow: 0px 5px 11px 0px rgba(0,0,0,0.16);
+	box-shadow: 0px 5px 11px 0px rgba(0,0,0,0.16);
+
+	@include my-border-width(0);
+}
+
+.navlink {
+	@include my-text(20px);
+}
+
+#tab {
+	position: absolute;
+	left: 85px;
+	top: 36px;
+	width: 8px;
+	height: 8px;
+	z-index: 10000;
+	position: fixed;
+}
+
+//
+//
+//ALL SCREENS
+//
+//
+
+
+body {
+	background-color: $light-grey;
+}
+::selection {
+  background: $text-glow; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: $text-glow; /* Gecko Browsers */
+}
+
+.page-container {
+	@extend .page-elem;
+
+	background-color:white;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+
+.page-title {
+	@include my-text(4.25vw);
+	margin-top: 6.5vh;
+	margin-bottom: 5vh;
+
+	@media screen and (max-width:650px) {
+		font-size: 7vw;
+	}
+}
+
+//
+//
+//HOME SCREEN
+//
+//
+
+#repleno-heading {
+	@include my-text(5.5vw);
+
+	@media screen and(max-width: 650px) {
+		font-size: 7vw;
+	}
+}
+
+#repleno-slogan {
+	@include my-text(3.25vw);
+
+	@media screen and(min-width: 750px) {
+		font-size: 2.75vw;
+	}
+}
+
+.subscribe-desc {
+	@include my-text(2vw);
+
+	@media screen and (min-width: 750px) {
+	  font-size: 1.5vw;
+	}
+
+	@media screen and (min-width: 900px) {
+	  font-size: 1.25vw;
+	}
+
+	@media screen and (min-width: 1050px) {
+	  font-size: 1vw;
+	}
+
+	@media screen and (min-width: 1200px) {
+	  font-size: .8vw;
+	}
+	
+	font-style: italic;
+}
+
+.subscribe-container {
+	@extend .horizontal-center;
+
+	width: 90%;
+
+	@media screen and(min-width:600px) {
+		width: 80%;
+	}
+
+	@media screen and(min-width:800px) {
+		width: 500px;
+	}
+}
+
+.subscribe-button {
+	width: 100px;
+}
+
+.text-input {
+	@extend .circle-corners;
+	@include total-color($light-grey);
+	@extend .my-font;
+}
+
+.form-control:focus {
+  border-color: $text-glow;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba($text-glow, 0.6);
+}
+
+.input-wrapper {
+	@extend .horizontal-center;
+
+
+}
+
+//
+//
+//ABOUT SCREEN
+//
+//
+
+.about-diagram {
+	@extend .horizontal-center;
+	width: 60vw;
+}
+
+.about-text-container {
+	@extend .horizontal-center;
+	margin-top: 2vh;
+	margin-left: 7%;
+}
+
+.about-text {
+	@include my-text(2vw);
+	text-align: left;
+}
+
+.about-diagram {
+	width: 80%;
+	max-height: 200px;
+}
+
+//
+//
+//TEAM
+//
+//
+
+.team-container {
+	@extend .horizontal-center;
+
+	@media screen and (min-width: 768px) {
+	  width: 700px;
+	}
+}
+
+.team-oval {
+	@extend .circle-corners;
+	@extend .horizontal-center;
+
+	height: 325px;
+	width: 150px;
+	margin-bottom: 40px;
+
+	border-style: solid;
+	@include my-border-width(3px);
+	border-color: $primary-orange;
+
+	background-color: $team-grey;
+}
+
+.team-img {
+}
+
+.person-name {
+	@include my-text(20px);
+	color: $primary-orange;
+}
+
+.person-job {
+	@include my-text(15px);
+}
+
+//
+//
+//PREORDER
+//
+//
+
+
+.preorder-text {
+	@include my-text(2.5vw);
+
+	@media screen and (max-width:750px) {
+		font-size: 4vw;
+	}
+}
+
+.order-button {
+	margin-top: 5vh;
+	margin-bottom: 5vh;
+	width: 80%;
+	max-width: 650px;
+}
+
+
+//
+//
+//CONTACT US
+//
+//
+
+.form-container {
+	@extend .horizontal-center;
+	width: 75%;
+	max-width: 800px;
+}
+
+.send-container {
+	@extend .horizontal-center;
+}
+
+.name-text {
+	width: 60%;
+
+	@media screen and(max-width: 750px) {
+		width: 75%;
+	}
+
+	max-width: 350px;
+}
+
+.message-text {
+	@include rounded-corners(15px);
+	height: 400px;
+}
+
+.email-input {
+
+}
+
+
+//
+//
+// FOOTER
+//
+//
+
+.footer {
+	background-color: $primary-orange;
+	height: 100px;
+}
+
+.footer-logo {
+	@extend .horizontal-center;
+	height: 50px;
+}
+
+
+
+
+
+
+
+
+
